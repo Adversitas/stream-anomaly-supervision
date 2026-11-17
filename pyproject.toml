@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "streamwatch"
+version = "0.1.0"
+description = "Online anomaly detectors for real-time supervision (rolling z, EWMA, median/MAD, seasonal profile, ensemble), benchmarked on the Numenta Anomaly Benchmark with cross-group threshold tuning."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+streamwatch = "streamwatch.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/streamwatch"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

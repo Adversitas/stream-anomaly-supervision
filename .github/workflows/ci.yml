@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pytest -q
+      - name: Fetch NAB (pinned commit) and run the cross-group benchmark
+        run: |
+          streamwatch fetch
+          streamwatch benchmark --out ci-reports
+      - name: Replay one real series as a stream
+        run: streamwatch watch data/nab/realKnownCause/machine_temperature_system_failure.csv --detector rolling_z --threshold 7 | tail -5

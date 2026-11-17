@@ -1,0 +1,136 @@
+{
+  "tune on realAWSCloudwatch -> test on realKnownCause": [
+    {
+      "detector": "rolling z-score",
+      "threshold": 7.0,
+      "tune_f1": 0.384,
+      "test_windows": 18,
+      "test_detected": 8,
+      "test_recall": 0.444,
+      "test_alerts": 24,
+      "test_precision": 0.375,
+      "test_f1": 0.407,
+      "test_median_delay": 0.667,
+      "points_per_second": 1497490
+    },
+    {
+      "detector": "EWMA control chart",
+      "threshold": 7.0,
+      "tune_f1": 0.317,
+      "test_windows": 18,
+      "test_detected": 7,
+      "test_recall": 0.389,
+      "test_alerts": 28,
+      "test_precision": 0.286,
+      "test_f1": 0.329,
+      "test_median_delay": 0.667,
+      "points_per_second": 3073717
+    },
+    {
+      "detector": "rolling median / MAD",
+      "threshold": 5.0,
+      "tune_f1": 0.299,
+      "test_windows": 18,
+      "test_detected": 10,
+      "test_recall": 0.556,
+      "test_alerts": 135,
+      "test_precision": 0.096,
+      "test_f1": 0.164,
+      "test_median_delay": 0.5,
+      "points_per_second": 11232
+    },
+    {
+      "detector": "seasonal profile (weekday x hour)",
+      "threshold": 10.0,
+      "tune_f1": 0.254,
+      "test_windows": 18,
+      "test_detected": 15,
+      "test_recall": 0.833,
+      "test_alerts": 123,
+      "test_precision": 0.163,
+      "test_f1": 0.272,
+      "test_median_delay": 0.379,
+      "points_per_second": 377555
+    },
+    {
+      "detector": "ensemble (median of 4)",
+      "threshold": 7.0,
+      "tune_f1": 0.326,
+      "test_windows": 18,
+      "test_detected": 8,
+      "test_recall": 0.444,
+      "test_alerts": 47,
+      "test_precision": 0.191,
+      "test_f1": 0.268,
+      "test_median_delay": 0.667,
+      "points_per_second": 8806
+    }
+  ],
+  "tune on realKnownCause -> test on realAWSCloudwatch": [
+    {
+      "detector": "rolling z-score",
+      "threshold": 7.0,
+      "tune_f1": 0.407,
+      "test_windows": 30,
+      "test_detected": 20,
+      "test_recall": 0.667,
+      "test_alerts": 104,
+      "test_precision": 0.269,
+      "test_f1": 0.384,
+      "test_median_delay": 0.5,
+      "points_per_second": 604817
+    },
+    {
+      "detector": "EWMA control chart",
+      "threshold": 7.0,
+      "tune_f1": 0.329,
+      "test_windows": 30,
+      "test_detected": 21,
+      "test_recall": 0.7,
+      "test_alerts": 117,
+      "test_precision": 0.205,
+      "test_f1": 0.317,
+      "test_median_delay": 0.5,
+      "points_per_second": 992244
+    },
+    {
+      "detector": "rolling median / MAD",
+      "threshold": 3.0,
+      "tune_f1": 0.216,
+      "test_windows": 30,
+      "test_detected": 29,
+      "test_recall": 0.967,
+      "test_alerts": 702,
+      "test_precision": 0.141,
+      "test_f1": 0.246,
+      "test_median_delay": 0.191,
+      "points_per_second": 7928
+    },
+    {
+      "detector": "seasonal profile (weekday x hour)",
+      "threshold": 12.0,
+      "tune_f1": 0.294,
+      "test_windows": 30,
+      "test_detected": 26,
+      "test_recall": 0.867,
+      "test_alerts": 507,
+      "test_precision": 0.148,
+      "test_f1": 0.253,
+      "test_median_delay": 0.31,
+      "points_per_second": 283712
+    },
+    {
+      "detector": "ensemble (median of 4)",
+      "threshold": 10.0,
+      "tune_f1": 0.359,
+      "test_windows": 30,
+      "test_detected": 16,
+      "test_recall": 0.533,
+      "test_alerts": 165,
+      "test_precision": 0.212,
+      "test_f1": 0.304,
+      "test_median_delay": 0.5,
+      "points_per_second": 6369
+    }
+  ]
+}
